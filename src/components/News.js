@@ -128,17 +128,14 @@ export class News extends Component {
         return (
             <div className='container my-3'>
                 <h2>News App- Headlines</h2>
-                <div className='row my-3'>
-                    <div className="col-md-4 ">
-                        <NewsItems title="my_title" description="Data to show" imageUrl="https://cdn.24.co.za/files/Cms/General/d/663/93a5c0dda0554249a1f8690ca0d8b6f8.jpg" 
-                        newsUrl="TODO"/>
+                <div className='row '>
+                {this.state.articles.map((element)=>{
+                   return <div className="col-md-4 " key={element.url}>     
+                   {/* key should be given to the element which will  be returned and should be unique */}
+                        <NewsItems title={element.title.slice(0,45)} description={element.description.slice(0,88)} imageUrl={element.urlToImage} 
+                        newsUrl={element.url}/>
                     </div>
-                    <div className="col-md-4">
-                        <NewsItems title="my_title" description="Data to show" />
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItems title="my_title" description="Data to show" />
-                    </div>
+                })}
                 </div>
             </div>
         )
